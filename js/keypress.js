@@ -38,13 +38,17 @@ $(document).ready(function(){
            link_index = 0;
       if (link_index < 0)
            link_index = link_list.length - 1;
+
+      // apply css class to selected link, and remove it from all other links
       var cssClass = "selected_link";
       link_list.removeClass(cssClass).eq(link_index).addClass(cssClass);
 
+      // scroll body to the selected link
       $('html, body').animate({
           scrollTop: $(".selected_link").offset().top -300
       }, 20);
 
+      // set global variable addressVariable to the address of the selected link
       addressValue = $(".selected_link").attr("href");
       // return(addressValue);
   }
