@@ -6,6 +6,10 @@ I loved the console-like aesthetic, but I was a little disappointed when I tried
 
 Following the club's DIY, volunteer ethos, I decided to write some JavaScript to do just that. 
 
+### Live Demo 
+
+You can view a live demo of a copy of the Tilde Club homepage with my JavaScript enabled [here](http://samschlinkert.com/tilde_test/). Use it as a reference when reading the rest of this README.
+
 ### What key_navigation.js Does
 
 `key_navigation.js` listens for keypresses of up arrow, 'k', and 'p' for going up, and down arrow, 'j' and 'n' for going down. It cycles through all the a tags (links) on the page in order. 
