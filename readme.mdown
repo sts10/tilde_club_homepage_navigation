@@ -8,16 +8,20 @@ Following the club's DIY, volunteer ethos, I decided to write some JavaScript to
 
 ### What key_navigation.js Does
 
-`key_navigation.js` listens for keypresses of up arrow, 'k', and 'p' for going up, and down arrow, 'j' and 'n' for going down. It cycles through all the a tags (links) on the page in order. When it's "on" a link, it applies the CSS class of 'selected_link' to the link and, if the user hits enter, it goes to the href of that link. 
+`key_navigation.js` listens for keypresses of up arrow, 'k', and 'p' for going up, and down arrow, 'j' and 'n' for going down. It cycles through all the a tags (links) on the page in order. 
 
-### What If There's a Textbox or other Input on the Page?
+When it's "on" a link, it applies the CSS class of 'selected_link' to the link and, if the user hits enter, it navigates the browser to the href of that link. 
 
-Good question. The first thing the `keydown` listener does is evaluate this `if` statement: 
+### What If There's a Textbox or Other Input on the Page?
+
+Good question. What we're worried about here is if you later add, say, a newsletter sign-up form to the page. What if the user has a j or n in his or her email address! No worries, I thought of that, and even put two text boxes into `index.html` to test for this problem.
+
+How I handled the problem: The first thing the `keydown` listener does is evaluate this `if` statement: 
 
 ```
 // if all text boxes are out of focus...
 if ($("input").is(':focus') == false && $("textarea").is(':focus') == false) {
-    // do the code 
+    // do the navigation code 
 } 
 ```
 
@@ -41,7 +45,7 @@ The Navigate function does 4 small things: (1) update the global variable `link_
 
 ###  What Changes Did You Make to index.html?
 
-I added a two lines in the `head` to include jQuery and my file, `key_navigation.js`. Here are those two lines: 
+I added a two lines in the HTML `head` to include jQuery (hosted by Google) and my file, `key_navigation.js`. Here are those two lines: 
 
 ```
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -63,5 +67,6 @@ Feel free to change the styling (could even add a [blinking background](http://j
 Lastly, for testing purposes, I placed a text box and textarea in index.html to prove that my key navigation does not interfere with form input. Obviously the text box and textarea should be removed before deployment. 
 
 Those are the only changes I made to the HTML file. 
+
 
 
