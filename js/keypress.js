@@ -1,11 +1,5 @@
 
 $(document).ready(function(){
- 
-  function goToKeyedURL(tilde_member_name){
-    // some code to direct browser to http://tilde.club/~ + tilde_member_name
-  }
-
-  // http://jsfiddle.net/MKZSE/77/
 
   var link_index = -1;
   var addressValue = '';
@@ -18,24 +12,21 @@ $(document).ready(function(){
 
       switch(e.which) {
 
-        // http://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes
-        case 37: // left
-        break;
+        // code look-up: http://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes
 
         case 38: // up
         case 75: // k
+        case 80: // p
           Navigate(-1);
-        break;
-
-        case 39: // right
         break;
 
         case 40: // down
         case 74: // j
+        case 78: // n
           Navigate(1);
         break;
 
-        case 13: // carriage return
+        case 13: // enter/return/carriage return
           window.location.href = addressValue;
         break; 
 
@@ -46,8 +37,7 @@ $(document).ready(function(){
   });
 
   // http://jsfiddle.net/MKZSE/77/
-
-  var link_index = -1;
+ 
 
   var Navigate = function(diff) {
       link_index += diff;
@@ -70,13 +60,7 @@ $(document).ready(function(){
 
       // set global variable addressVariable to the address of the selected link
       addressValue = $(".selected_link").attr("href");
-      // return(addressValue);
-  }
-
-  function makeLinkArray(){
-
-  }
-
+  };
 
 });
 
