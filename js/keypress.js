@@ -11,20 +11,32 @@ $(document).ready(function(){
   var addressValue = '';
 
   // listens for any navigation keypress activity
-  $(document).keypress(function(e){
+  $(document).keydown(function(e){
 
-    if (e.keyCode == 106) {  // j
-        Navigate(1);
-    }
-    if(e.keyCode==107){ // k
-        Navigate(-1);
-    }
+    switch(e.which) {
+            case 37: // left
+            break;
 
-    if(e.keyCode==13){ // carriage return
-        // alert("would open link_index of " + link_index);
-        // alert("would navigate to " + addressValue)
-        window.location.href = addressValue;
-    }    
+            case 38: // up
+            case 75: // k
+              Navigate(-1);
+            break;
+
+            case 39: // right
+            break;
+
+            case 40: // down
+            case 74: // j
+              Navigate(1);
+            break;
+
+            case 13: // carriage return
+              window.location.href = addressValue;
+            break; 
+
+            default: return; // exit this handler for other keys
+        }
+        e.preventDefault(); // prevent the default action (scroll / move caret)
   });
 
   // http://jsfiddle.net/MKZSE/77/
