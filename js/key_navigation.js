@@ -8,7 +8,7 @@ $(document).ready(function(){
   $(document).keydown(function(e){
 
     // if all text boxes are out of focus...
-    if ($("input").is(':focus') == false){
+    if ($("input").is(':focus') == false && $("textarea").is(':focus') == false) {
 
       switch(e.which) {
 

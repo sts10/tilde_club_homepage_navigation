@@ -1,0 +1,67 @@
+# Key Navigation for Tilde Club Homepage
+
+I really admire the aesthetic of the [Tilde Club homepage](http://tilde.club/), which was created by [Paul Ford](https://twitter.com/ftrain). He wrote about creating Tilde Club [here](https://medium.com/message/tilde-club-i-had-a-couple-drinks-and-woke-up-with-1-000-nerds-a8904f0a2ebf).
+
+I loved the console-like aesthetic, but I was a little disappointed when I tried to navigate the links on the page with my keyboard, as one might in a console environment. 
+
+Following the club's DIY, volunteer ethos, I decided to write some JavaScript to do just that. 
+
+### What key_navigation.js Does
+
+`key_navigation.js` listens for keypresses of up arrow, 'k', and 'p' for going up, and down arrow, 'j' and 'n' for going down. It cycles through all the a tags (links) on the page in order. When it's "on" a link, it applies the CSS class of 'selected_link' to the link and, if the user hits enter, it goes to the href of that link. 
+
+### What If There's a Textbox or other Input on the Page?
+
+Good question. The first thing the `keydown` listener does is evaluate this `if` statement: 
+
+```
+// if all text boxes are out of focus...
+if ($("input").is(':focus') == false && $("textarea").is(':focus') == false) {
+    // do the code 
+} 
+```
+
+This `if` statement only executes the code within it if no `input`s (like text boxes) or `textarea`s are in "focus". Focus is the JavaScript/jQuery term for when the cursor is in a text box. 
+ 
+### OK, Can We Talk About the Actual JavaScript Code? 
+
+Sure. 
+
+There are really three sections to the `key_navigation.js` file. 
+
+The first is the declaration and initialization of two global variables-- `link_index` and `addressValue`. `link_index` will be the "link number" or "a tag number" that is currently selected. And `addressValue` is the URL or 'href' of that link. 
+
+The second is the `keydown` jQuery listener. When the user hits the up arrow, 'k', or 'p', we want to call a JavaScript function called `Navigate` and pass it an argument of `-1`. Likewise, for up arrow, 'j', and 'n', we want to call `Navigate` with an argument of `1`. 
+
+When the user hits enter we want to take them to the URL of the link they're currently "on", which is always stored in the global variable `addressValue`. 
+
+Lastly, we have the `Navigate` function, which I borrowed from this [jsfiddle](http://jsfiddle.net/MKZSE/77/). 
+
+The Navigate function does 4 small things: (1) update the global variable `link_index`, (2) applies the CSS class to the newly-selected link, (3) scrolls the page to the newly-selected link with an offset of 300 pixels, and (4) set global variable addressVariable to the address of the selected link. Hurray!
+
+###  What Changes Did You Make to index.html?
+
+I added a two lines in the `head` to include jQuery and my file, `key_navigation.js`. Here are those two lines: 
+
+```
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="js/key_navigation.js"></script>
+```
+
+I also added a new CSS class called `selected_link`. This class is applied (via jQuery) to whichever link is currently "selected".
+
+```
+.selected_link {
+  color:darkorange;
+  background:#000400;
+  border: 2px darkorange solid;
+}
+```
+
+Feel free to change the styling (could even add a [blinking background](http://jsfiddle.net/LkuNB/8/)!)
+
+Lastly, for testing purposes, I placed a text box and textarea in index.html to prove that my key navigation does not interfere with form input. Obviously the text box and textarea should be removed before deployment. 
+
+Those are the only changes I made to the HTML file. 
+
+
