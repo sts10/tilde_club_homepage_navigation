@@ -8,13 +8,10 @@ $(document).ready(function(){
   // http://jsfiddle.net/MKZSE/77/
 
   var link_index = -1;
+  var addressValue = '';
 
   // listens for any navigation keypress activity
   $(document).keypress(function(e){
-    // alert('some key was pressed');
-    if(e.which == 106){ // j 
-      // alert("you pressed j");
-    } 
 
     if (e.keyCode == 106) {  // j
         Navigate(1);
@@ -24,8 +21,9 @@ $(document).ready(function(){
     }
 
     if(e.keyCode==13){ // carriage return
-        alert("would open link_index of " + link_index);
-
+        // alert("would open link_index of " + link_index);
+        // alert("would navigate to " + addressValue)
+        window.location.href = addressValue;
     }    
   });
 
@@ -35,7 +33,7 @@ $(document).ready(function(){
 
   var Navigate = function(diff) {
       link_index += diff;
-      var link_list = $("li a");
+      var link_list = $("a");
       if (link_index >= link_list.length)
            link_index = 0;
       if (link_index < 0)
@@ -43,8 +41,12 @@ $(document).ready(function(){
       var cssClass = "selected_link";
       link_list.removeClass(cssClass).eq(link_index).addClass(cssClass);
 
-      var addressValue = $(".selected_link").attr("href");
-      alert(addressValue);
+      $('html, body').animate({
+          scrollTop: $(".selected_link").offset().top -300
+      }, 20);
+
+      addressValue = $(".selected_link").attr("href");
+      // return(addressValue);
   }
 
   function makeLinkArray(){
