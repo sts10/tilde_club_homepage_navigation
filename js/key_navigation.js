@@ -36,8 +36,6 @@ $(document).ready(function(){
     }
   });
 
-  // http://jsfiddle.net/MKZSE/77/
- 
 
   var Navigate = function(diff) {
       link_index += diff;
