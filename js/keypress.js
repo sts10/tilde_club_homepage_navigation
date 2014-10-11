@@ -12,9 +12,10 @@ $(document).ready(function(){
 
   // listens for any navigation keypress activity
   $(document).keydown(function(e){
-    if ($("input").is(':focus')){
 
-    } else {
+    // if all text boxes are out of focus...
+    if ($("input").is(':focus') == false){
+
       switch(e.which) {
 
         // http://www.cambiaresearch.com/articles/15/javascript-char-codes-key-codes
