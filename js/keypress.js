@@ -46,10 +46,12 @@ $(document).ready(function(){
   var Navigate = function(diff) {
       link_index += diff;
       var link_list = $("a");
-      if (link_index >= link_list.length)
+      if (link_index >= link_list.length){
            link_index = 0;
-      if (link_index < 0)
+      }
+      if (link_index < 0){
            link_index = link_list.length - 1;
+      }
 
       // apply css class to selected link, and remove it from all other links
       var cssClass = "selected_link";
